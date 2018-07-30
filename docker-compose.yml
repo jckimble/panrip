@@ -1,0 +1,20 @@
+version: "3"
+services:
+    panrip:
+        image: "panrip/panrip:latest"
+        build: "."
+        environment:
+            EMAIL: "jckimble@thorbis.com"
+            PASSWORD: "jckjr91"
+            OUT: "download"
+        volumes:
+            - "./download:/download"
+        deploy:
+            replicas: 1
+            resources:
+                limits:
+                    memory: 10M
+            update_config:
+                failure_action: rollback
+            restart_policy:
+                condition: on-failure
