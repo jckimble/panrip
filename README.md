@@ -18,7 +18,7 @@ docker pull registry.gitlab.com/paranoidsecurity/panrip
 ## Recommended Usage
 This is the quickest way to use panrip. run command and go on with your day.
 ```sh
-docker run -v "/mnt/Music:/download" -d --restart on-failure panrip/panrip --email emailaddress --password password
+docker run -v "/mnt/Music:/download" -d --restart on-failure registry.gitlab.com/paranoidsecurity/panrip --email emailaddress --password password
 ```
 
 ## License
