@@ -1,0 +1,41 @@
+name: Test and Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '1.17'
+          cache: true
+      - run: go get .
+        name: Install Dependencies
+      - run:  go fmt $(go list ./... | grep -v /vendor/)
+        name: Run Format
+      - run:  go vet $(go list ./... | grep -v /vendor/)
+        name: Run Vet
+      - run: go test -race $(go list ./... | grep -v /vendor/)
+        name: Run Tests
+      - run: CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o panrip .
+        name: Run Build
+
+  merge-me:
+    name: Auto Merge
+    needs: build_test
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
+    steps:
+      - uses: fastify/github-action-merge-dependabot@main

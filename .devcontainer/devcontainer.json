@@ -1,0 +1,19 @@
+{
+  "name": "Wishlist",
+  "image": "mcr.microsoft.com/vscode/devcontainers/go:1.17",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "zapu.vscode-aspell",
+        "christian-kohler.path-intellisense"
+      ]
+    }
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "tmux"
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/tmux-apt-get:1": {},
+    "ghcr.io/guiyomh/features/vim:0": {}
+  }
+}
