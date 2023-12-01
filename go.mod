@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/bogem/id3v2 v1.2.0
 	github.com/cellofellow/gopiano v0.0.0-20190331163816-7b1fa67bb8c3
-	github.com/spf13/cobra v1.7.0
+	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.16.0
 )
 
